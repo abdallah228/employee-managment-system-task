@@ -20,13 +20,16 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+//login
 Route::post('admin-login',[AuthController::class,'login']);
-Route::get('admin-logout',[AuthController::class,'logout']);
 
 
 Route::group(['prefix'=>'admin','middleware'=>['auth:api']],function(){
 
+    //logout
+Route::get('admin-logout',[AuthController::class,'logout']);
+
+//employees
 Route::resource('employee',EmployeesController::class);
 Route::get('employee-search',[EmployeesController::class,'search']);
 
